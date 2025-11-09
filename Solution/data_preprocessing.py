@@ -63,6 +63,7 @@ def main():
     image = io.imread(image_path)
     mask = io.imread(mask_path)
     mask = mask>0
+    # here image is a little different than validation
     mask = np.logical_not(mask)
 
     create_patches(image, mask, PATCH_SIZE, STRIDE, output_image_path, output_mask_path, 'train')
@@ -74,7 +75,7 @@ def main():
     output_image_path = os.path.join(output_base_path, 'validation/image')
     output_mask_path = os.path.join(output_base_path, 'validation/mask')
 
-    # Process Validation Data 
+    # Process Validation Data
     print("\nProcessing validation data...")
     image = io.imread(image_path)
     mask = io.imread(mask_path)
