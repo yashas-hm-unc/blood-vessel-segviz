@@ -150,3 +150,4 @@ cython_debug/
 # Credits: https://github.com/github/gitignore
 
 */Data/preprocessed
+*.tar
