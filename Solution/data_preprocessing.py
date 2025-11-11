@@ -70,16 +70,19 @@ def create_patches_test(image, patch_size, stride, output_path_image, name):
 
 def main():
 
-    PATCH_SIZE = 512  # Size of the patches (512x512 pixels)
-    STRIDE = 256      # Overlap between patches (512-256 = 256 pixels overlap)
+    # Size of the patches (512x512 pixels)
+    PATCH_SIZE = 512
+    # Overlap between patches (512-256 = 256 pixels overlap)
+    STRIDE = 256      
 
     project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-    base_data_path = os.path.join(project_root, 'Problem/Data')
+    # TODO: remove solution and problem directory
+    base_data_path = os.path.join(project_root, 'Solution/Data/raw_data')
     output_base_path = os.path.join(project_root, 'Solution/Data/preprocessed')
 
     # Paths for training data
-    image_path = os.path.join(base_data_path, 'train_data/image/N 134 copy.tif')
-    mask_path = os.path.join(base_data_path, 'train_data/ground truth/N 134 groundtruth.tif')
+    image_path = os.path.join(base_data_path, 'train/retina.tif')
+    mask_path = os.path.join(base_data_path, 'train/retina groundtruth.tif')
     output_image_path = os.path.join(output_base_path, 'train/image')
     output_mask_path = os.path.join(output_base_path, 'train/mask')
 
@@ -95,8 +98,8 @@ def main():
         
 
     # Paths for validation data
-    image_path = os.path.join(base_data_path, 'validation_data/N 129 crop.tif')
-    mask_path = os.path.join(base_data_path, 'validation_data/N 129 groundtruth.tif')
+    image_path = os.path.join(base_data_path, 'validation/retina.tif')
+    mask_path = os.path.join(base_data_path, 'validation/retina groundtruth.tif')
     output_image_path = os.path.join(output_base_path, 'validation/image')
     output_mask_path = os.path.join(output_base_path, 'validation/mask')
 
@@ -109,8 +112,8 @@ def main():
     create_patches(image, mask, PATCH_SIZE, STRIDE, output_image_path, output_mask_path, 'validation')
 
     # Paths for test data
-    test_image_dir = os.path.join(base_data_path, 'test_data')
-    output_test_image_path = os.path.join(output_base_path, 'test/image')
+    test_image_dir = os.path.join(base_data_path, 'test')
+    output_test_image_path = os.path.join(output_base_path, 'test/images')
 
     # Process Test Data
     print("\nProcessing test data...")
